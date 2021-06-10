@@ -45,6 +45,6 @@ public class GreetingServiceBean implements GreetingService {
 
     @Override
     public void delete(String id) {
-        repository.deleteById(id);
+        repository.delete(id);
     }
 }
