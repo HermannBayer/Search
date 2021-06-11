@@ -1,5 +1,6 @@
 package com.search;
 
+
 import com.search.service.GreetingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,6 +27,13 @@ public class GreetingController {
         return greetingRepository.findAll();
     }
 
+    
+    @PostMapping("/greetings")
+    public Greeting addUser(@RequestBody Greeting newGreeting) {
+        return greetingRepository.save(newGreeting);
+    }
+
+    
 /*
     @ResponseBody
     @RequestMapping(value = "/greetings", method = RequestMethod.GET)
