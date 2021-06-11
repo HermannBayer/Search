@@ -1,7 +1,8 @@
 package com.search.service;
 
-import com.search.model.Greeting;
 import java.util.List;
+
+import com.search.Greeting;
 
 public interface GreetingService {
     List<Greeting> getAll();

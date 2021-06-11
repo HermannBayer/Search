@@ -1,6 +1,5 @@
-package com.search.controller;
+package com.search;
 
-import com.search.model.Greeting;
 import com.search.service.GreetingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,9 +12,21 @@ import java.util.List;
 @RequestMapping("/api")
 public class GreetingController {
 
-    @Autowired
-    private GreetingService greetingService;
+//    @Autowired
+ //   private GreetingService greetingService;
+   
+    private final GreetingRepository greetingRepository;
+    
+    public GreetingController(GreetingRepository greetingRepository){
+        this.greetingRepository = greetingRepository;
+    }
 
+    @GetMapping
+    public Iterable<Greeting> findAll(){
+        return greetingRepository.findAll();
+    }
+
+/*
     @ResponseBody
     @RequestMapping(value = "/greetings", method = RequestMethod.GET)
     public ResponseEntity<List<Greeting>> getAll() {
@@ -26,6 +37,7 @@ public class GreetingController {
     @RequestMapping(value = "/greetings", method = RequestMethod.POST)
     public ResponseEntity<Greeting> insertGreeting(@RequestBody Greeting greeting) {
         return new ResponseEntity<Greeting>(greetingService.create(greeting), HttpStatus.CREATED);
+    	
     }
 
     @ResponseBody
@@ -52,4 +64,5 @@ public class GreetingController {
     public ResponseEntity<List<Greeting>> getByUserName(@PathVariable("name") String name) {
         return new ResponseEntity<List<Greeting>>(greetingService.getGreetingByUsername(name), HttpStatus.OK);
     }
+*/
 }

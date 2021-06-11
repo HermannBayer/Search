@@ -1,8 +1,9 @@
 package com.search.service;
 
 import com.google.common.collect.Lists;
-import com.search.dao.GreetingRepository;
-import com.search.model.Greeting;
+import com.search.Greeting;
+import com.search.GreetingRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,7 @@ public class GreetingServiceBean implements GreetingService {
 
     @Autowired
     private GreetingRepository repository;
+    private GreetingService repository1;
 
     @Override
     public List<Greeting> getAll() {
@@ -21,7 +23,7 @@ public class GreetingServiceBean implements GreetingService {
 
     @Override
     public Greeting findOne(String id) {
-        return repository.findOne(id);
+        return repository1.findOne(id);
     }
 
     @Override
@@ -31,7 +33,7 @@ public class GreetingServiceBean implements GreetingService {
 
     @Override
     public Greeting update(Greeting greeting) {
-        Greeting persitedGreeting = repository.findOne(greeting.getId());
+        Greeting persitedGreeting = repository1.findOne(greeting.getId());
         if(persitedGreeting == null) {
             return null;
         }
@@ -45,6 +47,6 @@ public class GreetingServiceBean implements GreetingService {
 
     @Override
     public void delete(String id) {
-        repository.delete(id);
+        repository1.delete(id);
     }
 }

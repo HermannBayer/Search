@@ -1,10 +1,11 @@
-package com.search.model;
+package com.search;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 import java.io.Serializable;
 
-@Document(indexName = "index", type = "greetings")
+
+@Document(indexName = "p", createIndex = true)
 public class Greeting implements Serializable{
 
     @Id
