@@ -33,5 +33,13 @@ public class GreetingController {
         return greetingRepository.save(newGreeting);
     }
 
+    @GetMapping("/{username}")
+    @ResponseBody    
+    public Iterable<Greeting> findUser(
+    		@RequestParam(required = false, name = "username") String user) {
+        return greetingRepository.findByUsername(user);
+    }
+
+    
     
 }
